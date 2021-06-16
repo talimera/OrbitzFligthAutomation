@@ -1,0 +1,180 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-06-16T16:21:54.750Z",
+        "line": 3,
+        "name": "Searching for roundtrip flight",
+        "description": "",
+        "id": "user-should-be-able-to-buy-roundtrip-tickets;searching-for-roundtrip-flight",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 9844000000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "user is on the main page",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_is_on_the_main_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2841000000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user clicks on more travel dropdown and clicks Flights",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_clicks_on_more_travel_dropdown_and_clicks_flights()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 928000000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user clicks on Leaving from button and User enters \"San Francisco\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"San Francisco\"",
+                  "offset": 51
+                }
+              ],
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_clicks_on_leaving_from_button_and_user_enters(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 911000000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "user clicks on Going to button and User enters \"New York\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"New York\"",
+                  "offset": 47
+                }
+              ],
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_clicks_on_going_to_button_and_user_enters(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1024000000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "user click on Departing button and User chooses Departing and Returning date",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_click_on_departing_button_and_user_chooses_departing_and_returning_date()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2126000000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "user clicks on Search button and User sees search results contain \"San Francisco\" and \"New York\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"San Francisco\"",
+                  "offset": 66
+                },
+                {
+                  "val": "\"New York\"",
+                  "offset": 86
+                }
+              ],
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_clicks_on_search_button_and_user_sees_search_results_contain_and(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User click on nonstop for departure flights",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_click_on_nonstop_for_departure_flights()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User sorts for most expensive departure ticket and selects that ticket",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_sorts_for_most_expensive_departure_ticket_and_selects_that_ticket()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "User click on nonstop for returning flights",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_click_on_nonstop_for_returning_flights()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "User sorts for most expensive returning ticket and continue to review page",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_sorts_for_most_expensive_returning_ticket_and_continue_to_review_page()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "User sees the flight information is correct",
+            "match": {
+              "location": "com.orbitz.stepdefinitions.RoundTripStepDefinitions.user_sees_the_flight_information_is_correct()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@roundtrip"
+          }
+        ]
+      }
+    ],
+    "name": "User should be able to buy roundtrip tickets",
+    "description": "",
+    "id": "user-should-be-able-to-buy-roundtrip-tickets",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/feature/RoundTrip.feature",
+    "tags": []
+  }
+]
