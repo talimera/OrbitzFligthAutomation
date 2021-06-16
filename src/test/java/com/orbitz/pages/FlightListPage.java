@@ -1,5 +1,6 @@
 package com.orbitz.pages;
 
+import com.orbitz.utilities.BrowserUtil;
 import com.orbitz.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -18,8 +19,6 @@ public class FlightListPage {
 
     }
 
-    private FlightPage flightPage = new FlightPage();
-
     @FindBy(xpath = "(//button[@class='uitk-faux-input'])[1]")
     @CacheLookup
     private WebElement flyingFrom;
@@ -36,7 +35,7 @@ public class FlightListPage {
     @CacheLookup
     private WebElement returning;
 
-    @FindBy(css = "input#stops-0")
+    @FindBy(id = "stops-0")
     @CacheLookup
     private WebElement nonStopBox;
 
@@ -81,18 +80,27 @@ public class FlightListPage {
     private WebElement roundTripPrice;
 
 
+    public String price(){
+        return roundTripPrice.getText();
+    }
+
+    public WebElement getNonStopBox() {
+        return nonStopBox;
+    }
+
+
     public void findNonStopFlights() {
         nonStopBox.click();
-        // add wait here
+        BrowserUtil.waitFor(2);
+
     }
 
     public void highestPriceDepartureTicket() {
         sortDropdown.click();
         Select dropdown = new Select(sortDropdown);
         dropdown.selectByValue("PRICE_DECREASING");
-        // add wait here
+        BrowserUtil.waitFor(2);
         departureTicket.click();
-        selectTicketButton.click();
     }
 
 
@@ -100,8 +108,15 @@ public class FlightListPage {
         sortDropdown.click();
         Select dropdown = new Select(sortDropdown);
         dropdown.selectByValue("PRICE_DECREASING");
-        // add wait here
+        BrowserUtil.waitFor(2);
         returnTicket.click();
+    }
+
+    public void selectTicket() {
+        selectTicketButton.click();
+    }
+
+    public void selectSecondTicket() {
         continueButton.click();
     }
 
