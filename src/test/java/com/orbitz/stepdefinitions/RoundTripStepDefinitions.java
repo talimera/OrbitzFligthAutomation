@@ -10,13 +10,6 @@ import com.orbitz.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class RoundTripStepDefinitions {
 
@@ -25,15 +18,12 @@ public class RoundTripStepDefinitions {
     FlightListPage flightListPage;
     ReviewPage reviewPage;
 
-    private  String departureTicket;
-    private  String returnTicket;
+    private String departureTicket;
+    private String returnTicket;
 
     @Given("user is on the main page")
     public void user_is_on_the_main_page() {
 
-        Driver.getDriver().manage().window().maximize();
-        Driver.getDriver().manage().deleteAllCookies();
-        Driver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         Driver.getDriver().get(ConfigurationReader.get("url"));
 
     }
@@ -50,7 +40,7 @@ public class RoundTripStepDefinitions {
 
     @Then("user clicks on Going to button and User enters {string}")
     public void user_clicks_on_going_to_button_and_user_enters(String arrival) {
-        flightPage.chooseArrivalAirpot(arrival);
+        flightPage.chooseArrivalAirport(arrival);
     }
 
     @Then("user click on Departing button and User chooses Departing and Returning date")
@@ -63,7 +53,6 @@ public class RoundTripStepDefinitions {
 
         String ticketDetail = flightPage.chosenFlightDates();
         flightListPage = flightPage.searchFlights();
-        BrowserUtil.waitFor(4);
         String resultDetails = flightListPage.flightDetails();
 
         Assert.assertTrue(resultDetails.contains(departure));
@@ -80,14 +69,14 @@ public class RoundTripStepDefinitions {
     @Then("User sorts for most expensive departure ticket and selects that ticket")
     public void user_sorts_for_most_expensive_departure_ticket_and_selects_that_ticket() {
 
-        BrowserUtil.waitFor(3);
         flightListPage.highestPriceDepartureTicket();
         departureTicket = flightListPage.departureTicketDetails();
+        BrowserUtil.waitFor(2);
         flightListPage.selectTicket();
     }
 
     @Then("User click on nonstop for returning flights")
-    public void user_click_on_nonstop_for_returning_flights(){
+    public void user_click_on_nonstop_for_returning_flights() {
 
         BrowserUtil.waitFor(3);
         flightListPage.findNonStopFlights();
@@ -96,21 +85,22 @@ public class RoundTripStepDefinitions {
 
     @Then("User sorts for most expensive returning ticket and continue to review page")
     public void user_sorts_for_most_expensive_returning_ticket_and_continue_to_review_page() {
-        BrowserUtil.waitFor(3);
+
         flightListPage.highestPriceReturnTicket();
         returnTicket = flightListPage.returnTicketDetails();
         flightListPage.selectSecondTicket();
-        BrowserUtil.waitFor(3);
+
     }
 
     @Then("User sees the flight information is correct")
     public void user_sees_the_flight_information_is_correct() {
-        System.out.println(departureTicket);
-        System.out.println(returnTicket);
 
         String price = flightListPage.price();
-        System.out.println(price);
+        reviewPage = flightListPage.goToReviewPage();
 
+        Assert.assertEquals(price, reviewPage.priceTotal());
+        Assert.assertEquals(returnTicket, reviewPage.returnTicketDetails());
+        Assert.assertEquals(departureTicket, reviewPage.departureTicketDetails());
 
 
     }

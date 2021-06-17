@@ -13,7 +13,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/feature",
         glue = "com/orbitz/stepdefinitions",
         dryRun = false,
-        tags = "@roundtrip"
+        tags = "@roundtrip",
+        publish = true
 )
 public class CukesRunner {
 

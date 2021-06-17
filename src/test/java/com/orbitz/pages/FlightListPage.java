@@ -80,22 +80,20 @@ public class FlightListPage {
     private WebElement roundTripPrice;
 
 
-    public String price(){
+    public String price() {
         return roundTripPrice.getText();
-    }
-
-    public WebElement getNonStopBox() {
-        return nonStopBox;
     }
 
 
     public void findNonStopFlights() {
+        BrowserUtil.waitFor(1);
         nonStopBox.click();
         BrowserUtil.waitFor(2);
 
     }
 
     public void highestPriceDepartureTicket() {
+        BrowserUtil.waitFor(1);
         sortDropdown.click();
         Select dropdown = new Select(sortDropdown);
         dropdown.selectByValue("PRICE_DECREASING");
@@ -105,6 +103,7 @@ public class FlightListPage {
 
 
     public void highestPriceReturnTicket() {
+        BrowserUtil.waitFor(1);
         sortDropdown.click();
         Select dropdown = new Select(sortDropdown);
         dropdown.selectByValue("PRICE_DECREASING");
@@ -126,11 +125,11 @@ public class FlightListPage {
     }
 
     public String departureTicketDetails() {
-        return departureDirection.getText() + " " + departureTicketDetails.getText();
+        return departureDirection.getText() + "\n" + departureTicketDetails.getText();
     }
 
     public String returnTicketDetails() {
-        return returnDirection.getText() + " " + returnTicketDetails.getText();
+        return returnDirection.getText() + "\n" + returnTicketDetails.getText();
     }
 
     public void assertTicketDetails() {
@@ -149,6 +148,9 @@ public class FlightListPage {
                 Driver.getDriver().switchTo().window(childWindow);
             }
         }
+
+        BrowserUtil.waitFor(3);
+
         return new ReviewPage();
     }
 

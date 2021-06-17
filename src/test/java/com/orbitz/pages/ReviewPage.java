@@ -14,14 +14,6 @@ public class ReviewPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
-    //Review Page Total Price
-    //span[@class='uitk-text uitk-type-500 uitk-type-bold uitk-text-emphasis-theme']
-
-    // First Ticket Flight company
-    //div[@class='uitk-text uitk-text-default-theme']
-
-
     @FindBy(xpath ="//span[@class='uitk-text uitk-type-500 uitk-type-bold uitk-text-emphasis-theme']")
     @CacheLookup
     private WebElement totalPrice;
@@ -34,18 +26,16 @@ public class ReviewPage {
     @CacheLookup
     private List<WebElement> flightDetails;
 
-
     public String priceTotal(){
         return totalPrice.getText();
     }
 
-
     public String departureTicketDetails(){
-        return tickets.get(0).getText()+" "+ flightDetails.get(0);
+        return tickets.get(0).getText();
     }
 
     public String returnTicketDetails(){
-        return tickets.get(0).getText()+" "+ flightDetails.get(1);
+        return tickets.get(1).getText();
     }
 
     public String totalPrice(){

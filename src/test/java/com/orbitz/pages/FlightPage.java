@@ -1,5 +1,6 @@
 package com.orbitz.pages;
 
+import com.orbitz.utilities.BrowserUtil;
 import com.orbitz.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -73,8 +74,6 @@ public class FlightPage {
     @CacheLookup
     private WebElement goingTo;
 
-
-
     @FindBy(xpath = "//button[contains(text(),'Search')]")
     @CacheLookup
     private WebElement searchButton;
@@ -92,12 +91,11 @@ public class FlightPage {
 
     }
 
-    public void chooseArrivalAirpot(String arrival){
+    public void chooseArrivalAirport(String arrival){
         goingToButton.click();
         arrivalAirport.sendKeys(arrival);
         selectArrivalAirport.click();
     }
-
 
     public void departureAndArrivalDate() {
 
@@ -108,15 +106,13 @@ public class FlightPage {
 
     }
 
-
     public String chosenFlightDates(){
         return  departureDateButton.getText() +
                 " " + returnDateButton.getText();
     }
 
-
-
     public FlightListPage searchFlights() {
+        BrowserUtil.waitFor(4);
         searchButton.click();
         return new FlightListPage();
     }
