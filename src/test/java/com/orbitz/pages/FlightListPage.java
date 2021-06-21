@@ -79,6 +79,10 @@ public class FlightListPage {
     @CacheLookup
     private WebElement roundTripPrice;
 
+    @FindBy(xpath = "//a[@data-test-id='forcedChoiceNoThanks']")
+    @CacheLookup
+    private WebElement noThanksButton;
+
 
     public String price() {
         return roundTripPrice.getText();

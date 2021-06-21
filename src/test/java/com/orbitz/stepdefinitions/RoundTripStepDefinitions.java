@@ -97,6 +97,7 @@ public class RoundTripStepDefinitions {
 
         String price = flightListPage.price();
         reviewPage = flightListPage.goToReviewPage();
+        System.out.println(Driver.getDriver().getTitle());
 
         Assert.assertEquals(price, reviewPage.priceTotal());
         Assert.assertEquals(returnTicket, reviewPage.returnTicketDetails());
