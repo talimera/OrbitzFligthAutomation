@@ -54,11 +54,15 @@ public class FlightPage {
     @CacheLookup
     private WebElement returnDateButton;
 
-    @FindBy(xpath = "//button[starts-with(@aria-label,'Jun 29')]")
+    @FindBy(xpath = "//button[@data-stid='date-picker-paging'][1]")
+    @CacheLookup
+    private WebElement previousMonthButton;
+
+    @FindBy(xpath = "(//div[@class='uitk-date-picker-month'])[1]//button[@data-day='29']")
     @CacheLookup
     private WebElement departureDate;
 
-    @FindBy(xpath = "//button[starts-with(@aria-label,'Jul 6')]")
+    @FindBy(xpath = "(//div[@class='uitk-date-picker-month'])[2]//button[@data-day='6']")
     @CacheLookup
     private WebElement returnDate;
 
@@ -100,6 +104,8 @@ public class FlightPage {
     public void departureAndArrivalDate() {
 
         departureDateButton.click();
+        previousMonthButton.click();
+        BrowserUtil.waitFor(3);
         departureDate.click();
         returnDate.click();
         dateDoneButton.click();
