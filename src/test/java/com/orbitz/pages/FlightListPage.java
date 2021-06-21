@@ -120,7 +120,13 @@ public class FlightListPage {
     }
 
     public void selectSecondTicket() {
+
+        BrowserUtil.waitFor(2);
         continueButton.click();
+        if (noThanksButton.isDisplayed()) {
+            BrowserUtil.waitFor(2);
+            noThanksButton.click();
+        }
     }
 
     public String flightDetails() {
